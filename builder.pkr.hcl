@@ -5,8 +5,9 @@ build {
     inline = [
       "export DEBIAN_FRONTEND=noninteractive",
       "apt-get update",
-      # "apt-get -y upgrade",
-      # "apt-get -y dist-upgrade",
+      "apt-mark hold grub*",
+      "apt-get -y upgrade",
+      "apt-get -y dist-upgrade",
       "apt-get -y install curl gnupg2",
       "curl -sL https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/Debian_10/Release.key | apt-key add - 2>/dev/null",
 
@@ -23,6 +24,8 @@ build {
       "apt-get -y -t buster-backports install libseccomp2",
       "apt-get -y install podman",
       "apt-get -y autoremove",
+      "curl -o /usr/local/bin/slirp4netns --fail -L https://github.com/rootless-containers/slirp4netns/releases/download/v1.1.8/slirp4netns-$(uname -m)",
+      "chmod +x /usr/local/bin/slirp4netns",
 
       "loginctl enable-linger vagrant",
     ]
