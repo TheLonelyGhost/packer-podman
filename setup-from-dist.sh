@@ -45,7 +45,6 @@ Vagrant.configure("2") do |config|
   ######### /EDITABLE SECTION ##############
 
   config.ssh.insert_key = false
-
   config.vm.provision "file", source: "~/.ssh/${PUBKEY}.pub", destination: "~/.ssh/me.pub"
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     mkdir -p ~/.ssh
