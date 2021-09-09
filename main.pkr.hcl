@@ -6,5 +6,5 @@ source "vagrant" "main" {
   communicator = "ssh"
   provider     = "virtualbox"
   add_force    = true
-  source_path  = "generic/debian10"
+  source_path  = "generic/fedora33"
 }
